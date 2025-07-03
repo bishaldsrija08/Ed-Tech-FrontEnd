@@ -1,20 +1,28 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+interface ITeacherInitialState {
+    teacherName: string;
+    teacherPassword: string;
+}
+
+const teacherInitialState: ITeacherInitialState = {
+    teacherName: "",
+    teacherPassword: "",
+}
 
 const teacherSlice = createSlice({
     name: "teacherSlice",
-    initialState: {
-        teacherName: "",
-        teacherPassword: "",
-    },
+    initialState: teacherInitialState,
     reducers: {
-        setTeacherName(state, action) {
+        setTeacherName(state: ITeacherInitialState, action: PayloadAction<ITeacherInitialState>) {
             state.teacherName = "Bishal Rijal"
         },
         setTeacherPassword(state, action) {
-            state.teacherPassword = "password123"
+            state.teacherPassword = action.payload.teacherPassword;
         }
     }
 })
 
-const { setTeacherName, teacherPassword } = teacherSlice.actions;
-setTeacherName()
+export { setTeacherName, teacherPassword }
+
+export default teacherSlice.reducer;
