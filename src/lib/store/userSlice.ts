@@ -1,18 +1,42 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IUserInitialState } from "./types";
 
-createSlice({
-    name: "userSlice",
-    initialState: {
-        name: null,
-        address: null
-    },
-    reducers: {
-        //state is the current state, action is the dispatched action
-        setName(state, action) {
-            state.name= "bishal"
+
+
+const userInitialState : IUserInitialState =  {
+        name : null, 
+        address : null
+    }
+
+const userSlice = createSlice({
+    name : "userSlice", 
+    initialState : userInitialState, 
+    reducers : {
+        // state --> mathi ko intialState 
+        // action --> trigger garda pathaune data aaune kura 
+        setName(state:IUserInitialState,action:PayloadAction<string>){
+         state.name = action.payload
         },
-        setAddress() {
+
+        setAddress(state:IUserInitialState,action:PayloadAction<string>){
+          state.address =  action.payload
+        }, 
+        sethaha(state,action){
 
         }
     }
 })
+
+// action 
+const {setName,setAddress,sethaha} = userSlice.actions
+export default userSlice.reducer 
+export {setName,setAddress,sethaha}
+
+/*
+const [name,setName] = useState(null)
+const [age,setAge]
+const [address,setAddress]= useState()
+
+reducers --> kunai function jasko through bata hami kehi programmed 
+
+*/
