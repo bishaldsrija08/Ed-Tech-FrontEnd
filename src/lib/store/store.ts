@@ -17,4 +17,5 @@ const store = configureStore({
 
 
 export default store;
-export type AppDispatch = typeof store.dispatch;
+export type AppDispatch = typeof store.dispatch; //useDispatch type dina chainxa
+export type RootState = ReturnType<typeof store.getState> //useSelctor lai type dina chainxa

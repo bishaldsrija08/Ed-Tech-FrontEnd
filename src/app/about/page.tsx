@@ -1,9 +1,10 @@
 'use client';
+import { useAppDispatch } from "@/lib/store/hooks";
 import { setAddress, setName } from "@/lib/store/userSlice";
-import { useDispatch } from "react-redux";
+
 
 const About = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const name = "Bishal";
   const address = "Chitwan";
   dispatch(setName(name));
