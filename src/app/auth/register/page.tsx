@@ -1,8 +1,11 @@
-"use client"
-import { ChangeEvent, FormEvent, useState } from "react"
+"use client";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { IRegisterData } from "./register.types";
+import { registerUser } from "@/lib/store/auth/authSliice";
+import { useAppDispatch } from "@/lib/store/hooks";
 
 const Register = () => {
+  const dispatch = useAppDispatch()
   const [data, setData] = useState<IRegisterData>({
     username: "",
     email: "",
@@ -19,9 +22,9 @@ const Register = () => {
     });
   };
 
-  const onSubmitForm = (e:FormEvent<HTMLFormElement>) => {
+  const onSubmitForm = (e: FormEvent<HTMLFormElement>) => {
     //api call
-
+    dispatch(registerUser(data))
   };
   return (
     <>

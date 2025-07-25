@@ -1,21 +1,26 @@
 
+// collect all slices and store 
 
-// //collect all slices and store
-// import { configureStore } from '@reduxjs/toolkit';
-// import studentSlice from './studentSlice';
-// import teacherSlice from './teacherSlice';
-// import userSlice from './userSlice';
-
-// const store = configureStore({
-//     reducer: {
-//         // Add your slices here
-//         studentSlice: studentSlice,
-//         teacherSlice: teacherSlice,
-//         userSlice : userSlice
-//     }  
-// })
+import { configureStore } from "@reduxjs/toolkit"
+import authSlice from "./auth/authSliice"
+import instituteSlice from "./institute/instiituteSlice"
 
 
-// export default store;
-// export type AppDispatch = typeof store.dispatch; //useDispatch type dina chainxa
-// export type RootState = ReturnType<typeof store.getState> //useSelctor lai type dina chainxa
+const store = configureStore({
+    reducer: {
+        auth: authSlice,
+        institute: instituteSlice
+    }
+})
+
+export default store
+
+// dispatch ko type --> paxi kaam lagxa hamilai 
+// dispatch(setName()) --> dispatch() : AppDispatch
+export type AppDispatch = typeof store.dispatch // useDispatch lai type dina chayenxa 
+export type RootState = ReturnType<typeof store.getState> // useSelector lai type dina chayenxa
+
+// react-redux -- package
+// next - reduxToolkit
+
+// differents hook provide garxa :useSelector (), useDispatch()
